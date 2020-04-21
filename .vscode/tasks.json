@@ -1,0 +1,37 @@
+{
+    "version": "2.0.0",
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+    },
+    "tasks": [
+        {
+            "label": "startdbg",
+            "type": "shell",
+            "command": "docker",
+            "args": [
+                "run",
+                "--rm",
+                "-w",
+                "/opt",
+                "-v",
+                "${workspaceFolder}/debugger:/dbg/",
+                "dbgtest:latest",
+                "python3",
+                "/dbg/debugpy",
+                "--connect",
+                "host.docker.internal:5678",
+                "--wait-for-client",
+                "./somecode.py"
+            ],
+            "isBackground": true,
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

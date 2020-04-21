@@ -1,0 +1,1 @@
+docker run --rm -w /opt -v ${PWD}/debugger:/dbg/ dbgtest:latest python3 /dbg/debugpy --connect host.docker.internal:5678 --wait-for-client ./somecode.py
